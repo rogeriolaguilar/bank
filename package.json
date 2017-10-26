@@ -1,0 +1,24 @@
+{
+  "name": "bank",
+  "version": "1.0.0",
+  "description": "Event sourcing and CQRS mini bank",
+  "main": "bank.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rogeriolaguilar/bank.git"
+  },
+  "keywords": [
+    "cqrs",
+    "event",
+    "sourcing"
+  ],
+  "author": "Rogério Libarino Aguilar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rogeriolaguilar/bank/issues"
+  },
+  "homepage": "https://github.com/rogeriolaguilar/bank#readme"
+}
