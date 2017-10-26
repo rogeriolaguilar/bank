@@ -2,7 +2,7 @@
   "name": "bank",
   "version": "1.0.0",
   "description": "Event sourcing and CQRS mini bank",
-  "main": "bank.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,5 +20,9 @@
   "bugs": {
     "url": "https://github.com/rogeriolaguilar/bank/issues"
   },
-  "homepage": "https://github.com/rogeriolaguilar/bank#readme"
+  "homepage": "https://github.com/rogeriolaguilar/bank#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2"
+  }
 }

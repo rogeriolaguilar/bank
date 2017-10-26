@@ -1,0 +1,147 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Bank",
+		"_postman_id": "27db3fe8-4862-45dc-64ee-2dc2f300ff20",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Persons",
+			"description": "",
+			"item": [
+				{
+					"name": "persons get",
+					"request": {
+						"url": "localhost:3000/persons/2342ij4oi324jv442",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "persons create",
+					"request": {
+						"url": "localhost:3000/persons",
+						"method": "POST",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "persons update",
+					"request": {
+						"url": "localhost:3000/persons/1",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"name\": \"Ryan\", \"birthday\": \"1991-01-20\" }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "persons remove",
+					"request": {
+						"url": "localhost:3000/persons/1",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"name\": \"Ryan\", \"birthday\": \"1991-01-20\" }"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Companies",
+			"description": "",
+			"item": [
+				{
+					"name": "get",
+					"request": {
+						"url": "localhost:3000/companies/2342ij4oi324jv442",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"url": "localhost:3000/companies/",
+						"method": "POST",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"url": "localhost:3000/companies/123",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"name\": \"Google Brasil\",\"cnpj\": \"06.990.590/0001-23\" }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "update copy",
+					"request": {
+						"url": "localhost:3000/companies/123",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
