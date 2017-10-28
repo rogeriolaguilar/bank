@@ -5,15 +5,12 @@ let app = express()
 app.use(bodyParser.json())
 app.set('port', process.env.HTTP_PORT || 3000)
 
-let getPerson = (req, res) => { res.json({ id: req.params.id, name: "Ryan", birthday: '1991-01-20' }) }
-let createPerson = (req, res) => { res.status(201).json({ id: "dummy-dummy-dummy-dummy" }) }
-let updatePerson = (req, res) => { res.json(req.body) }
-let deletePerson = (req, res) => { res.status(204).send() }
 
-app.get('/persons/:id', getPerson)
 app.post('/persons/', createPerson)
-app.put('/persons/:id', updatePerson)
-app.delete('/persons/:id', deletePerson)
+app.route('/persons/:id')
+  .get(getPerson)
+  .put(updatePerson)
+  .delete(deletePerson)
 
 
 app.get('/companies/:id', function (req, res) {

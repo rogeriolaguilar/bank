@@ -8,7 +8,7 @@ let should = chai.should();
 chai.use(chaiHttp);
 
 describe('Person', () => {
-  let person = { id: 'dummy-dummy-dummy-dummy', name: 'Ryan', birthday: '1991-01-20' }
+  const person = { id: 'dummy-dummy-dummy-dummy', name: 'Ryan', birthday: '1991-01-20' }
 
   describe('GET person', () => {
     it('should GET the person', (done) => {
@@ -39,7 +39,7 @@ describe('Person', () => {
 
   describe('PUT person', () => {
     it('it should return the updated person', (done) => {
-      let update_body = { name: 'New Ryan', birthday: '1991-01-20' }
+      const update_body = { name: 'New Ryan', birthday: '1991-01-20' }
 
       chai.request(server)
         .put(`/persons/${person.id}`)
