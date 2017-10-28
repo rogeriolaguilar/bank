@@ -8,13 +8,13 @@
 	},
 	"item": [
 		{
-			"name": "Persons",
+			"name": "People",
 			"description": "",
 			"item": [
 				{
-					"name": "persons get",
+					"name": "people get",
 					"request": {
-						"url": "localhost:3000/persons/2342ij4oi324jv442",
+						"url": "localhost:3000/people/2342ij4oi324jv442",
 						"method": "GET",
 						"header": [],
 						"body": {},
@@ -23,7 +23,7 @@
 					"response": []
 				},
 				{
-					"name": "persons create",
+					"name": "people create",
 					"request": {
 						"url": "localhost:3000/persons",
 						"method": "POST",
@@ -34,7 +34,7 @@
 					"response": []
 				},
 				{
-					"name": "persons update",
+					"name": "people update",
 					"request": {
 						"url": "localhost:3000/persons/1",
 						"method": "PUT",
@@ -54,9 +54,9 @@
 					"response": []
 				},
 				{
-					"name": "persons remove",
+					"name": "people remove",
 					"request": {
-						"url": "localhost:3000/persons/1",
+						"url": "localhost:3000/people/1",
 						"method": "DELETE",
 						"header": [
 							{

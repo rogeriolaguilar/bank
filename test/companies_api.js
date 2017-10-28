@@ -46,8 +46,8 @@ describe('Companies', () => {
         .put(`/companies/${company.id}`)
         .send(update_body)
         .end((err, res) => {
-          res.should.have.status(200)
-          res.body.should.include(update_body)
+          res.should.have.status(204)
+          res.body.should.be.empty
           done()
         })
     })
