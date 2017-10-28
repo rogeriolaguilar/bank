@@ -33,8 +33,8 @@ describe('Companies REST API', () => {
         .end((err, res) => {
           res.should.have.status(201)
           res.body.id.should.be.eq(company.id)
+          done()
         })
-      done()
     });
   });
 

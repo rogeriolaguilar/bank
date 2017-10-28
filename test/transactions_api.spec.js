@@ -34,8 +34,8 @@ describe('Transactions REST API', () => {
         .end((err, res) => {
           res.should.have.status(201)
           res.body.id.should.be.eq(transaction.id)
+          done()
         })
-      done()
     });
   });
 })
