@@ -7,7 +7,7 @@ let should = chai.should();
 
 chai.use(chaiHttp);
 
-describe('Companies', () => {
+describe('Companies REST API', () => {
   const company = { id: 'dummy-dummy-dummy-dummy', name: "Google Brasil", cnpj: '06.990.590/0001-23'
  }
 
