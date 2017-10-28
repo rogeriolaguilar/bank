@@ -6,40 +6,35 @@ app.use(bodyParser.json())
 app.set('port', process.env.HTTP_PORT || 3000)
 
 let Person = {
-  getPerson(req, res){ res.json({ id: req.params.id, name: "Ryan", birthday: '1991-01-20' }) },
-  createPerson(req, res){ res.status(201).json({ id: "dummy-dummy-dummy-dummy" }) },
-  updatePerson(req, res){ res.json(req.body) },
-  deletePerson(req, res){ res.status(204).send() }
-} 
+  get(req, res) { res.json({ id: req.params.id, name: "Ryan", birthday: '1991-01-20' }) },
+  create(req, res) { res.status(201).json({ id: "dummy-dummy-dummy-dummy" }) },
+  update(req, res) { res.json(req.body) },
+  delete(req, res) { res.status(204).send() }
+}
 
-app.route('/persons/')
-  .post(Person.createPerson)
+let Company = {
+  get(req, res) { res.json({ id: req.params.id, name: "Google Brasil", cnpj: '06.990.590/0001-23' }) },
+  create(req, res) { res.status(201).json({ id: "dummy-dummy-dummy-dummy" }) },
+  update(req, res) { res.json(req.body) },
+  delete(req, res) { res.status(204).send() }
+}
+
+
+app.route('/persons')
+  .post(Person.create)
 app.route('/persons/:id')
-  .get(Person.getPerson)
-  .put(Person.updatePerson)
-  .delete(Person.deletePerson)
+  .get(Person.get)
+  .put(Person.update)
+  .delete(Person.delete)
 
+app.route('/companies')
+  .post(Company.create)
+app.route('/companies/:id')
+  .get(Company.get)
+  .put(Company.update)
+  .delete(Company.delete)
 
-app.get('/companies/:id', function (req, res) {
-  res.json({ id: req.params.id, name: "Google Brasil", cnpj: '06.990.590/0001-23' })
-});
-
-app.post('/companies/', function (req, res) {
-  //res.params <-- { name: "Google Brasil",cnpj: "06.990.590/0001-23" }
-  res.status(201).json({ id: "dummy-dummy-dummy-dummy", })
-});
-
-app.put('/companies/:id', function (req, res) {
-  res.json(req.body)
-});
-
-app.delete('/companies/:id', function (req, res) {
-  res.status(204).send()
-});
-
-app.use(function (req, res) {
-  res.status(404).send()
-});
+app.use((req, res) => { res.status(404).send() });
 
 app.use(function (err, req, res, next) {
   console.error(err.stack);
