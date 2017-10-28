@@ -41,8 +41,6 @@ app.delete('/companies/:id', function(req, res){
   res.status(204).send()
 });
 
-
-
 app.use(function(req, res){
   res.status(404).send()
  });
@@ -53,3 +51,5 @@ app.use(function(req, res){
  });
 
 app.listen(app.get('port'))
+
+module.exports = app

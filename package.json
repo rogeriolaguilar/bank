@@ -4,7 +4,7 @@
   "description": "Event sourcing and CQRS mini bank",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --timeout 10000"
   },
   "repository": {
     "type": "git",
@@ -26,6 +26,9 @@
     "express": "^4.16.2"
   },
   "devDependencies": {
-    "jshint": "^2.9.5"
+    "chai": "^4.1.2",
+    "chai-http": "^3.0.0",
+    "jshint": "^2.9.5",
+    "mocha": "^4.0.1"
   }
 }
