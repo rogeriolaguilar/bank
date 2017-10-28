@@ -46,7 +46,7 @@ describe('Person', () => {
         .send(update_body)
         .end((err, res) => {
           res.should.have.status(200)
-          res.body.should.be.include(update_body)
+          res.body.should.include(update_body)
           done()
         })
     })
