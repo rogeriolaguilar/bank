@@ -2,8 +2,8 @@ var express = require('express')
 var bodyParser = require("body-parser")
 
 var app = express()
-app.use(bodyParser.json());
-app.set('port', process.env.HTTP_PORT || 3000);
+app.use(bodyParser.json())
+app.set('port', process.env.HTTP_PORT || 3000)
 
 
 app.get('/persons/:id', function(req, res){
