@@ -4,7 +4,7 @@
   "description": "Event sourcing and CQRS mini bank",
   "main": "server.js",
   "scripts": {
-    "test": "mocha --timeout 10000"
+    "test": "mocha --timeout 1000"
   },
   "repository": {
     "type": "git",
