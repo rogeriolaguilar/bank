@@ -36,7 +36,7 @@
 				{
 					"name": "people update",
 					"request": {
-						"url": "localhost:3000/persons/1",
+						"url": "localhost:3000/people/efwfefwe",
 						"method": "PUT",
 						"header": [
 							{
@@ -136,6 +136,43 @@
 						"body": {
 							"mode": "raw",
 							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Transactions",
+			"description": "",
+			"item": [
+				{
+					"name": "get transaction",
+					"request": {
+						"url": "localhost:3000/transactions/qwe123",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "create transaction",
+					"request": {
+						"url": "localhost:3000/transactions",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"type\": \"deposit\", \"amount\": 1000 }"
 						},
 						"description": ""
 					},
