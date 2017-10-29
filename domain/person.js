@@ -6,7 +6,7 @@ class Person {
   }
 
   add_account(account) {
-    this.accounts.push(account)
+    this._accounts.push(account)
   }
 
   get accounts(){
