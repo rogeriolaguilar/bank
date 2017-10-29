@@ -4,7 +4,7 @@
   "description": "Event sourcing and CQRS mini bank",
   "main": "server.js",
   "scripts": {
-    "test": "mocha **/*.spec.js"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
