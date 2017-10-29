@@ -7,7 +7,7 @@ class Account {
   }
 
   add_transaction(transaction) {
-    if (this._active) {
+    if (this._active && transaction.isValid()) {
       this._balance += transaction.amount
       this._transactions.push(transaction)
       return true

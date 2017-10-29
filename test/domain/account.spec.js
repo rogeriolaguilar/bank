@@ -16,9 +16,18 @@ describe('Account', () => {
       expect(account.transactions).to.be.length(1)
     });
 
-    it('account is not active and transaction is valid', () => {
+    it('account is not active', () => {
       let account = new Account(123, false)
       let transaction = new Transaction(100)
+
+      expect(account.add_transaction(transaction)).to.be.eq(false)
+      expect(account.balance).to.be.eq(0)
+      expect(account.transactions).to.be.length(0)
+    });
+
+    it('account is active and transaction is invalid', () => {
+      let account = new Account(123)
+      let transaction = { isValid: () => { false } }
 
       expect(account.add_transaction(transaction)).to.be.eq(false)
       expect(account.balance).to.be.eq(0)
