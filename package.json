@@ -23,12 +23,14 @@
   "homepage": "https://github.com/rogeriolaguilar/bank#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "sinon": "^4.0.2"
   },
   "devDependencies": {
     "chai": "^4.1.2",
     "chai-http": "^3.0.0",
     "jshint": "^2.9.5",
-    "mocha": "^4.0.1"
+    "mocha": "^4.0.1",
+    "sinon": "^4.0.2"
   }
 }
