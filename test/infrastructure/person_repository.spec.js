@@ -1,4 +1,4 @@
-process.env.NODE_ENV = "production"
+process.env.NODE_ENV = "test"
 let config = require("../../knexfile").test;
 let knex = require("knex")(config);
 let expect = require('chai').expect
