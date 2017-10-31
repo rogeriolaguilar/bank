@@ -11,9 +11,8 @@ class Account {
       this._balance += transaction.amount
       this._transactions.push(transaction)
       return true
-    }else{
-      return false
     }
+    return false
   }
 
   get transactions() {
