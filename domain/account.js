@@ -5,10 +5,6 @@ class Account {
     this._balance = balance
   }
 
-  handleCreation(accountCreationEvent){
-    console.log('handleCreation: save account in query model')
-  }
-
   handleDeposit(depositEvent) {
     this._balance += depositEvent.amount
   }

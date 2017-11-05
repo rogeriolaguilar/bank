@@ -1,25 +1,24 @@
 class AccountCreationEvent{
-  constructor(account, person, occurredAt = new Date()){
+  constructor(account, owner, occurredAt = new Date()){
     this._occurredAt = occurredAt
     this._account = account
-    this._person = person
+    this._owner = owner
   }
 
   process(){
-    this._account.handleCreation(this)
-    this._person.handleAccountCreation(this)
+    this._owner.handleAccountCreation(this)
   }
 
-  reverte(){
-    
+  reverse(){
+    this._owner.reverseAccountCreation(this)
   }
 
   get account(){
     return this._account
   }
 
-  get person(){
-    return this._person
+  get owner(){
+    return this._owner
   }
 
   get occurredAt(){

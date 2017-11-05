@@ -5,11 +5,20 @@ class Person {
     this._accounts = []
   }
 
-  handleAccountCreation(accountCreationEvent){
-    this._accounts.push(accountCreationEvent.account)
+  handleAccountCreation(accountCreationEvent) {
+    this.add_account(accountCreationEvent.account)
   }
 
-  get accounts(){
+  reverseAccountCreation(accountCreationEvent) {
+    let accountNumber = accountCreationEvent.account.number
+    this._accounts = this._accounts.filter( account => account.number !== accountNumber)    
+  }
+
+  add_account(account) {
+    this._accounts.push(account)
+  }
+
+  get accounts() {
     return this._accounts
   }
 }
