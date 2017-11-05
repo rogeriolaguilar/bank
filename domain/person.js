@@ -5,8 +5,8 @@ class Person {
     this._accounts = []
   }
 
-  add_account(account) {
-    this._accounts.push(account)
+  handleAccountCreation(accountCreationEvent){
+    this._accounts.push(accountCreationEvent.account)
   }
 
   get accounts(){

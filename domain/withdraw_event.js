@@ -1,5 +1,5 @@
 class WithdrawEvent {
-  constructor(amount, account, occurredAt) {
+  constructor(amount, account, occurredAt = new Date()) {
     this.occurredAt = occurredAt
     this.amount = amount
     this.account = account
