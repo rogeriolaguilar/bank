@@ -37,7 +37,6 @@ describe('Person', () => {
       expect(person.accounts).to.have.lengthOf(0)
     })
 
-
     it('should remove the correct account from customer', ()=>{
       let otherAccount = { number: 9999 }
       person.add_account(account)
@@ -48,10 +47,19 @@ describe('Person', () => {
 
       expect(person.accounts).to.have.lengthOf(1)
       expect(person.accounts[0]).to.eq(otherAccount)
-    })
+    });
+  });
 
+  describe('handleCreation', () => {
+    it('', () => {
+      // TODO      
+    });
+  });
 
+  describe('reverseCreation', () => {
+    it('', () => {
+      // TODO      
+    });
   });
 
 });
-
