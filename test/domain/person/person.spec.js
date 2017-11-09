@@ -1,5 +1,5 @@
 let expect = require('chai').expect
-Person = require("../../domain/person/person")
+Person = require("../../../domain/person/person")
 
 describe('Person', () => {
   let person

@@ -1,7 +1,7 @@
 let expect = require('chai').expect
 
-Account = require("../../domain/account/account");
-WithdrawEvent = require("../../domain/transaction/withdraw_event");
+Account = require("../../../domain/account/account");
+WithdrawEvent = require("../../../domain/transaction/withdraw_event");
 
 
 describe('WithdrawEvent', () => {
