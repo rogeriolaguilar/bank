@@ -4,15 +4,15 @@ let knex = require("knex")(config);
 let expect = require('chai').expect
 
 Person = require("../../domain/person");
-PersonRepository = require("../../infrastructure/person_repository");
+ReportingDatabase = require("../../infrastructure/reporting_database");
 
 
-describe('PersonRepository', () => {
+describe('ReportingDatabase', () => {
 	describe('#addPerson', () => {
 		let person = new Person('José Valim', new Date('1986-01-02'));
 
 		it('is a valid person', () => {
-			PersonRepository.persist(person)
+			ReportingDatabase.persistPerson(person)
 			
 			expect(1).to.be.eq(1)
 		});

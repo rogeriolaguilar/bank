@@ -2,13 +2,24 @@ let expect = require('chai').expect
 let sinon = require('sinon')
 
 Person = require('../domain/person')
+PersonRepository = require('../domain/person_repository')
+PersonRequester = require('../domain/person_requester')
+PersonWebAPIAdapter = require('../infrastructure/person_web_adapter')
 
-describe('Bank', () => {
+//rigth port
+class HardCodedPersonRepository {
+  getPerson(cpf) {
+    return new Person('Rogério', new Date('1991-01-27T00:00:00.000Z'))
+  }
+}
+
+
+describe('Bank get Person', () => {
 
   let cpf = '34034034071'
 
   it('should give person when ask for it', () => {
-    let personRequester = new PersonRequester()
+    let personRequester = new PersonRequester(new HardCodedPersonRepository())
     person = personRequester.getPerson(cpf)
 
     expect(person.name).to.be.eq('Rogério')
@@ -21,34 +32,14 @@ describe('Bank', () => {
     expect(person.name).to.be.eq('Yukihiro')
   });
 
+  it('should provide the person when ask for it with support of RestAdapter', () => {
+    personRequester = new PersonRequester(new HardCodedPersonRepository())
+
+    webAdapter = new PersonWebAPIAdapter(personRequester)
+
+    person = webAdapter.getPerson(cpf)
+
+    expect(person).to.be.eq('{"name":"Rogério","birthday":"1991-01-27T00:00:00.000Z"}')
+  });
+
 });
-
-
-
-//rigth port 
-class PersonRepository {
-  getPerson(cpf) {
-    // go to real db
-    return new Person('Yukihiro', new Date('1991-01-27T00:00:000.00Z'))
-  }
-}
-
-//rigth por
-class HardCodedPersonRepository {
-  getPerson(cpf) {
-    return new Person('Rogério', new Date('1991-01-27T00:00:000.00Z'))
-  }
-}
-
-
-//left port
-class PersonRequester {
-
-  constructor(personRepository = new HardCodedPersonRepository()) {
-    this._repository = personRepository
-  }
-
-  getPerson(cpf) {
-    return this._repository.getPerson(cpf)
-  }
-}
