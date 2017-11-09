@@ -2,9 +2,9 @@ let expect = require('chai').expect
 let sinon = require('sinon')
 
 
-PersonCreationEvent = require("../../domain/person_creation_event");
+PersonCreationEvent = require("../../domain/person/person_creation_event");
 Account = require("../../domain/account");
-Person = require("../../domain/person");
+Person = require("../../domain/person/person");
 
 describe('PersonCreationEvent', () => {
 

@@ -1,9 +1,9 @@
 let expect = require('chai').expect
 let sinon = require('sinon')
 
-Person = require('../domain/person')
-PersonRepository = require('../domain/person_repository')
-PersonRequester = require('../domain/person_requester')
+Person = require('../domain/person/person')
+PersonRepository = require('../domain/person/person_repository')
+PersonRequester = require('../domain/person/person_requester')
 PersonWebAPIAdapter = require('../infrastructure/person_web_adapter')
 
 //rigth port

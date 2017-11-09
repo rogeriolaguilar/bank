@@ -5,7 +5,7 @@ DepositEvent = require("../../domain/deposit_event");
 WithdrawEvent = require("../../domain/withdraw_event");
 AccountCreationEvent = require("../../domain/account_creation_event");
 Account = require("../../domain/account");
-Person = require("../../domain/person");
+Person = require("../../domain/person/person");
 
 describe('EventProcessor', () => {
 

@@ -3,7 +3,7 @@ let config = require("../../knexfile").test;
 let knex = require("knex")(config);
 let expect = require('chai').expect
 
-Person = require("../../domain/person");
+Person = require("../../domain/person/person");
 ReportingDatabase = require("../../infrastructure/reporting_database");
 
 

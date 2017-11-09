@@ -4,7 +4,7 @@ let sinon = require('sinon')
 
 AccountCreationEvent = require("../../domain/account_creation_event");
 Account = require("../../domain/account");
-Person = require("../../domain/person");
+Person = require("../../domain/person/person");
 
 describe('AccountCreationEvent', () => {
 
