@@ -1,6 +1,6 @@
 class Person {
   constructor(name, birthday) {
-    this.name = name
+    this._name = name
     this.birthday = birthday
 
     // change account array to a account repository
@@ -32,6 +32,10 @@ class Person {
 
   get accounts() {
     return this._accounts
+  }
+
+  get name(){
+    return this._name
   }
 }
 module.exports = Person;
