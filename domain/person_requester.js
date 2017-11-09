@@ -1,3 +1,5 @@
+PersonRepository = require('./person_repository') 
+
 class PersonRequester {
   //left hexagonal port
   

@@ -4,7 +4,8 @@
   "description": "Event sourcing and CQRS mini bank",
   "main": "server.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "server": "nodemon ./server.js"
   },
   "repository": {
     "type": "git",
@@ -32,6 +33,7 @@
     "chai-http": "^3.0.0",
     "jshint": "^2.9.5",
     "mocha": "^4.0.1",
+    "nodemon": "^1.12.1",
     "sinon": "^4.0.2",
     "sqlite3": "^3.1.13"
   }

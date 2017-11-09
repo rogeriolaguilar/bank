@@ -39,7 +39,7 @@ describe('Bank get Person', () => {
 
     person = webAdapter.getPerson(cpf)
 
-    expect(person).to.be.eq('{"name":"Rogério","birthday":"1991-01-27T00:00:00.000Z"}')
+    expect(person.name).to.be.eq("Rogério")
   });
 
 });

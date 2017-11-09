@@ -1,5 +1,6 @@
 class Person {
-  constructor(name, birthday) {
+  constructor(name, birthday, cpf = "77777777777") {
+    this._cpf = cpf
     this._name = name
     this._birthday = birthday
 
@@ -40,6 +41,10 @@ class Person {
 
   get birthday(){
     return this._birthday
+  }
+
+  get cpf(){
+    return this._cpf
   }
 }
 module.exports = Person;
