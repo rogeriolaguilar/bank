@@ -1,5 +1,5 @@
 let expect = require('chai').expect
-Transaction = require("../../domain/transaction");
+Transaction = require("../../domain/transaction/transaction");
 
 describe('Transaction', () => {
   describe('#isValid', () => {
