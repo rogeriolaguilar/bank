@@ -1,6 +1,6 @@
-let express = require('express')
-let router = express.Router()
-let PeopleController =  require('../controllers/people_controller')
+const express = require('express')
+const router = express.Router()
+const PeopleController =  require('../controllers/people_controller')
 
 
 router.get('/:id', PeopleController.get)

@@ -1,4 +1,4 @@
-PersonRequester = require('../domain/person/person_requester')
+const PersonRequester = require('../domain/person/person_requester')
 
 class PersonWebAPIAdapter {
   constructor(personDomainPort = new PersonRequester(), publicationStrategy = (r) => {return r}) {

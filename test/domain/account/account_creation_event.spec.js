@@ -2,9 +2,9 @@ let expect = require('chai').expect
 let sinon = require('sinon')
 
 
-AccountCreationEvent = require("../../../domain/account/account_creation_event");
-Account = require("../../../domain/account/account");
-Person = require("../../../domain/person/person");
+const AccountCreationEvent = require("../../../domain/account/account_creation_event");
+const Account = require("../../../domain/account/account");
+const Person = require("../../../domain/person/person");
 
 describe('AccountCreationEvent', () => {
 

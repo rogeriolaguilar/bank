@@ -1,5 +1,4 @@
-Person = require('./person')
-
+const Person = require('./person')
 
 //rigth port 
 class PersonRepository {

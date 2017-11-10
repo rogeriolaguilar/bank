@@ -1,4 +1,4 @@
-PersonWebAdapter = require('../infrastructure/person_web_adapter')
+const PersonWebAdapter = require('../infrastructure/person_web_adapter')
 
 class PeopleController {
   

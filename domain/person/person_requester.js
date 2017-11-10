@@ -1,4 +1,4 @@
-PersonRepository = require('./person_repository') 
+const PersonRepository = require('./person_repository') 
 
 class PersonRequester {
   //left hexagonal port

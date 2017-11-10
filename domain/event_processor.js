@@ -3,7 +3,7 @@ class EventProcessor {
     this._logger = logger
   }
 
-  process(event){
+ process(event){
     this._logger.log(`processing event: ${JSON.stringify(event)}`)
     event.process()
     // if ok until here, save event

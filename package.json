@@ -24,6 +24,7 @@
   "homepage": "https://github.com/rogeriolaguilar/bank#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
+    "eslint": "^4.11.0",
     "express": "^4.16.2",
     "knex": "^0.13.0",
     "pg": "^7.3.0"

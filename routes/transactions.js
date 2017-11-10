@@ -1,7 +1,7 @@
 let express = require('express')
 let router = express.Router()
 
-TransactionsHandler = {
+const TransactionsHandler = {
   get(req, res) { res.json({ id: req.params.id, type: "deposit", amount: 1000 }) },
   create(req, res) { res.status(201).json({ id: "dummy-dummy-dummy-dummy" }) },
 }
