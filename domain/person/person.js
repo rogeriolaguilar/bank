@@ -1,8 +1,8 @@
 class Person {
-  constructor(name, birthday, cpf = "77777777777") {
-    this._cpf = cpf
-    this._name = name
-    this._birthday = birthday
+  constructor(params) {
+    this._cpf = params.cpf
+    this._name = params.name
+    this._birthday = params.birthday
 
     // change account array to a account repository
     this._accounts = []

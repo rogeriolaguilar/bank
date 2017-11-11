@@ -10,7 +10,7 @@ describe('PersonCreationEvent', () => {
   let person
   let event
   beforeEach(() => {
-    person = new Person('Martin', new Date())
+    person = new Person({ name: 'Martin', birthday: new Date() })
     event = new PersonCreationEvent(person)
   });
 

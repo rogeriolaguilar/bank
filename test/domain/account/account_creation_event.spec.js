@@ -13,7 +13,7 @@ describe('AccountCreationEvent', () => {
   let event
   beforeEach(() => {
     account = new Account(123)
-    person = new Person('Martin', new Date())
+    person = new Person({ name: 'Martin', birthday: new Date(), cpf: '777777777' })
     event = new AccountCreationEvent(account, person)
   });
 

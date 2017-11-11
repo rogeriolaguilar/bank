@@ -15,7 +15,7 @@ describe('EventProcessor', () => {
 
   beforeEach(() => {
     account = new Account(123)
-    person = new Person('Martin', new Date())
+    person = new Person({name: 'Martin', birthday: new Date()})
     eventProcessor = new EventProcessor()
   });
 

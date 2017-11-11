@@ -7,7 +7,7 @@ describe('Person', () => {
    let account = { number: 123123 }
 
   beforeEach(() => {
-    person = new Person('Linus Torvalds', new Date('1969-12-28'))
+    person = new Person({name: 'Linus Torvalds', birthday: new Date('1969-12-28')})
      
     accountCreationEvent = { account: account}
   });
