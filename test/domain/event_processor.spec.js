@@ -1,11 +1,11 @@
 let expect = require('chai').expect
 
-EventProcessor = require("../../domain/event_processor");
-DepositEvent = require("../../domain/transaction/deposit_event");
-WithdrawEvent = require("../../domain/transaction/withdraw_event");
-AccountCreationEvent = require("../../domain/account/account_creation_event");
-Account = require("../../domain/account/account");
-Person = require("../../domain/person/person");
+const EventProcessor = require("../../domain/event_processor");
+const DepositEvent = require("../../domain/transaction/deposit_event");
+const WithdrawEvent = require("../../domain/transaction/withdraw_event");
+const AccountCreationEvent = require("../../domain/account/account_creation_event");
+const Account = require("../../domain/account/account");
+const Person = require("../../domain/person/person");
 
 describe('EventProcessor', () => {
 

@@ -7,6 +7,9 @@ module.exports = {
     "parserOptions": {
         "sourceType": "module"
     },
+    "plugins": [
+        "mocha"
+    ],
     "rules": {
         "accessor-pairs": "error",
         "array-bracket-newline": "error",
@@ -102,6 +105,7 @@ module.exports = {
         "max-params": "error",
         "max-statements": "error",
         "max-statements-per-line": "error",
+        "mocha/no-exclusive-tests": "error",
         "multiline-comment-style": "error",
         "multiline-ternary": "error",
         "new-parens": "error",

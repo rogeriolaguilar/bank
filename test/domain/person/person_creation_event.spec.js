@@ -2,17 +2,14 @@ let expect = require('chai').expect
 let sinon = require('sinon')
 
 
-PersonCreationEvent = require("../../../domain/person/person_creation_event");
-Account = require("../../../domain/account/account");
-Person = require("../../../domain/person/person");
+const PersonCreationEvent = require("../../../domain/person/person_creation_event");
+const Person = require("../../../domain/person/person");
 
 describe('PersonCreationEvent', () => {
 
-  let account
   let person
   let event
   beforeEach(() => {
-    account = new Account(123)
     person = new Person('Martin', new Date())
     event = new PersonCreationEvent(person)
   });

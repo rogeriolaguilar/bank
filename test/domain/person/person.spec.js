@@ -1,13 +1,14 @@
-let expect = require('chai').expect
-Person = require("../../../domain/person/person")
+const expect = require('chai').expect
+const Person = require("../../../domain/person/person")
 
 describe('Person', () => {
   let person
   let accountCreationEvent 
+   let account = { number: 123123 }
 
   beforeEach(() => {
     person = new Person('Linus Torvalds', new Date('1969-12-28'))
-    account = { number: 123123 } 
+     
     accountCreationEvent = { account: account}
   });
 

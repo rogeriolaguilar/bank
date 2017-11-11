@@ -1,13 +1,10 @@
 //process.env.NODE_ENV = 'test';
 
-let chai = require('chai');
-let chaiHttp = require('chai-http');
-let server = require('../server');
-let should = chai.should();
-
+const chai = require('chai');
+const chaiHttp = require('chai-http');
+const server = require('../server');
+chai.should();
 chai.use(chaiHttp);
-
-const TRANSACTION_TYPES = ['deposit', 'withdraw']
 
 describe('Transactions REST API', () => {
   const transaction = { id: 'dummy-dummy-dummy-dummy', type: "deposit", amount: 1000 }

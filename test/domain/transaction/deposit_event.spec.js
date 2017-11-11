@@ -1,14 +1,13 @@
 let expect = require('chai').expect
 
-Account = require("../../../domain/account/account");
-DepositEvent = require("../../../domain/transaction/deposit_event");
+const Account = require("../../../domain/account/account");
+const DepositEvent = require("../../../domain/transaction/deposit_event");
 
 
 describe('DepositEvent', () => {
   describe('#process', () => {
 
     it('account with no balance', () => {
-      let balance = 0
       let account = new Account(123)
       
       new DepositEvent(100, account).process()

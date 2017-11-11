@@ -1,10 +1,10 @@
+require('mocha')
 let expect = require('chai').expect
-let sinon = require('sinon')
 
-Person = require('../domain/person/person')
-PersonRepository = require('../domain/person/person_repository')
-PersonRequester = require('../domain/person/person_requester')
-PersonWebAPIAdapter = require('../infrastructure/person_web_adapter')
+const Person = require('../domain/person/person')
+const PersonRepository = require('../domain/person/person_repository')
+const PersonRequester = require('../domain/person/person_requester')
+const PersonWebAPIAdapter = require('../infrastructure/person_web_adapter')
 
 //rigth port
 class HardCodedPersonRepository {
@@ -20,24 +20,24 @@ describe('Bank get Person', () => {
 
   it('should give person when ask for it', () => {
     let personRequester = new PersonRequester(new HardCodedPersonRepository())
-    person = personRequester.getPerson(cpf)
+    let person = personRequester.getPerson(cpf)
 
     expect(person.name).to.be.eq('Rogério')
   });
 
   it('should give person when ask for it with support of PersonRepository', () => {
-    personRequester = new PersonRequester(new PersonRepository())
-    person = personRequester.getPerson(cpf)
+    let personRequester = new PersonRequester(new PersonRepository())
+    let person = personRequester.getPerson(cpf)
 
     expect(person.name).to.be.eq('Yukihiro')
   });
 
   it('should provide the person when ask for it with support of RestAdapter', () => {
-    personRequester = new PersonRequester(new HardCodedPersonRepository())
+    let personRequester = new PersonRequester(new HardCodedPersonRepository())
 
-    webAdapter = new PersonWebAPIAdapter(personRequester)
+    let webAdapter = new PersonWebAPIAdapter(personRequester)
 
-    person = webAdapter.getPerson(cpf)
+    let person = webAdapter.getPerson(cpf)
 
     expect(person.name).to.be.eq("Rogério")
   });

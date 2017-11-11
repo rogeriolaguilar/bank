@@ -1,10 +1,13 @@
 process.env.NODE_ENV = "test"
-let config = require("../../knexfile").test;
-let knex = require("knex")(config);
+
+/*
+ *let config = require("../../knexfile").test;
+ *let knex = require("knex")(config);
+ */
 let expect = require('chai').expect
 
-Person = require("../../domain/person/person");
-ReportingDatabase = require("../../infrastructure/reporting_database");
+const Person = require("../../domain/person/person");
+const ReportingDatabase = require("../../infrastructure/reporting_database");
 
 
 describe('ReportingDatabase', () => {
