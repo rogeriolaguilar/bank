@@ -4,7 +4,7 @@ class PeopleController {
   
   static get(req, res) {
     let adapter = new PersonWebAdapter()
-    res.json(adapter.getPerson('cpf'))
+    res.json(adapter.getPerson(req.params.cpf))
   }
 
   static create(req, res) { res.status(201).json({ cpf: "77777777777" }) }

@@ -13,8 +13,8 @@ class PersonWebAdapter {
   }
 
   createPerson(person_params){
-    person = new Person(person_params)
-    this._personDomainPort.createPerson 
+    let person = new Person(person_params)
+    this._personDomainPort.createPerson(person) 
   }
 }
 module.exports = PersonWebAdapter
