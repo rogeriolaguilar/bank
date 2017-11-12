@@ -4,7 +4,7 @@
   "description": "Event sourcing and CQRS mini bank",
   "main": "server.js",
   "scripts": {
-    "test": "mocha",
+    "test": "NODE_ENV=test mocha",
     "server": "nodemon ./server.js",
     "eslint": "eslint **.js"
   },
