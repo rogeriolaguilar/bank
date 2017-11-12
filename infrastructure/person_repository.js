@@ -1,3 +1,5 @@
+const environment = process.env.NODE_ENV
+const knex = require("knex")(require("../knexfile")[environment])
 const Person = require('../domain/person/person')
 
 //rigth port 
@@ -9,7 +11,12 @@ class PersonRepository {
   }
 
   save(person){
-    return person
+    return knex('people').insert({ 
+      name: person.name,
+      cpf: person.cpf, 
+      birthday: person.birthday 
+    })
   }
 }
 module.exports = PersonRepository
+
