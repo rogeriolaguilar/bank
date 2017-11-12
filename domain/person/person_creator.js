@@ -2,7 +2,7 @@ const PersonRepository = require('../../infrastructure/person_repository')
 
 class PersonCreator {
   //left hexagonal port
-  constructor(personReporitory = PersonRepository()){
+  constructor(personReporitory = new PersonRepository()){
     this._repository = personReporitory
   }
 

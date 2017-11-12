@@ -1,5 +1,4 @@
-const environment = process.env.NODE_ENV
-const knex = require("knex")(require("../knexfile")[environment])
+const knex = require("knex")(require("../knexfile")[process.env.NODE_ENV])
 const Person = require('../domain/person/person')
 
 //rigth port 
