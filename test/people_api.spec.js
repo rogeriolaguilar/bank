@@ -10,7 +10,7 @@ chai.use(chaiHttp);
 describe('People REST API', () => {
   const person = { cpf: "77777777777", name: 'Yukihiro', birthday: '1991-01-27T00:00:00.000Z' }
 
-  describe('GET person', () => {
+  describe('GET /person/:cpf', () => {
     it('should GET the person', (done) => {
       chai.request(server)
         .get(`${PEOPLE_URL}/${person.cpf}`)
@@ -24,20 +24,20 @@ describe('People REST API', () => {
     })
   })
 
-  describe('POST person with success', () => {
+  describe('POST /person', () => {
     it('it should return the person cpf', (done) => {
       chai.request(server)
         .post(PEOPLE_URL)
         .send({ cpf: person.cpf, name: person.name, birthday: person.birthday })
         .end((err, res) => {
           res.should.have.status(201)
-          res.body.cpf.should.be.eq(person.cpf)
+          res.body.should.be.empty
           done()
         })
     });
   });
 
-  describe('PUT person', () => {
+  describe('PUT /person/:cpf', () => {
     it('it should return the updated person', (done) => {
       const update_body = { name: 'New Ryan', birthday: '1991-01-20' }
 
@@ -52,7 +52,7 @@ describe('People REST API', () => {
     })
   })
 
-  describe('DELETE person', () => {
+  describe('DELETE /person/:cpf', () => {
     it('should return success with 204 code', (done) => {
       chai.request(server)
         .delete(`${PEOPLE_URL}/${person.cpf}`)

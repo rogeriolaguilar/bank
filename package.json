@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "NODE_ENV=test mocha",
-    "server": "nodemon ./server.js",
+    "server": "NODE_ENV=development nodemon server.js",
     "eslint": "eslint **.js"
   },
   "repository": {

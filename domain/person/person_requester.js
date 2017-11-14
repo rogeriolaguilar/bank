@@ -1,9 +1,9 @@
-const PersonRepository = require('../../infrastructure/person_repository')
+const RepositoryFactory = require('../../infrastructure/repository_factory')
 
 class PersonRequester {
   //left hexagonal port
   
-    constructor(personRepository = new PersonRepository()) {
+    constructor(personRepository = RepositoryFactory.getPersonRepository(process.env.NODE_ENV)) {
       this._repository = personRepository
     }
   

@@ -3,9 +3,10 @@ let expect = require('chai').expect
 
 const Person = require('../domain/person/person')
 const PersonRepository = require('../infrastructure/person_repository')
+const RepositoryFactory = require('../infrastructure/repository_factory')
 const PersonRequester = require('../domain/person/person_requester')
 const PersonCreator = require('../domain/person/person_creator')
-const PersonWebAPIAdapter = require('../infrastructure/person_web_adapter')
+const PersonWebAdapter = require('../infrastructure/person_web_adapter')
 
 //rigth port
 class HardCodedPersonRepository {
@@ -14,7 +15,7 @@ class HardCodedPersonRepository {
   }
 
   getPerson(cpf) {
-    return new Person({ name: 'Rogério', birthday: new Date('1991-01-27T00:00:00.000Z') })
+    return new Person({cpf: cpf, name: 'Rogério', birthday: new Date('1991-01-27T00:00:00.000Z') })
   }
 
   save(person) {
@@ -43,9 +44,9 @@ describe('Bank Person', () => {
 
     it('should provide the person when ask for it with support of RestAdapter', () => {
       let personRequester = new PersonRequester(new HardCodedPersonRepository())
-      let webAdapter = new PersonWebAPIAdapter(personRequester)
+      let webAdapter = new PersonWebAdapter.GetPerson(personRequester)
 
-      let person = webAdapter.getPerson(cpf)
+      let person = webAdapter.get(cpf)
 
       expect(person.name).to.be.eq("Rogério")
     });
@@ -54,14 +55,13 @@ describe('Bank Person', () => {
   describe('create', () => {
 
     const person_params = { cpf: cpf, name: 'Robert Martin', birthday: new Date('01-01-1952') }
-    const repository = new HardCodedPersonRepository()
+    const repository = RepositoryFactory.getPersonRepository('test')
 
     it('should create person when asked for it', () => {
       const personCreator = new PersonCreator(repository)
-      const person = new Person(person_params)
-      personCreator.createPerson(person)
+      personCreator.createPerson(person_params)
 
-      expect(repository.saved_persons).to.have.lengthOf(1)
+      expect(repository.getPerson(cpf).name).to.be.eq('Robert Martin')
     })
 
   });

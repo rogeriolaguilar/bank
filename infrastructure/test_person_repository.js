@@ -1,8 +1,11 @@
 const knex = require("knex")(require("../knexfile")[process.env.NODE_ENV])
 const Errors = require('../domain/errors')
-const PG_CONFLICT_ERROR = '23505'
 
-class PersonRepository {
+const SQLITE_CONFLICT_ERROR = 'SQLITE_CONSTRAINT'
+
+//rigth port 
+class TestPersonRepository {
+
   getPerson(cpf) {
     return knex.select()
       .from('people')
@@ -21,13 +24,13 @@ class PersonRepository {
       cpf: person.cpf,
       birthday: person.birthday
     }).catch((e) => {
-      console.log(`PersonRepository error code:${e.code} person cpf:${person.cpf}`)
-      if (e.code == PG_CONFLICT_ERROR) {
+      console.log(`TestPersonRepository error code:'${e.code}, cpf:${person.cpf}`)
+      if (e.code.includes(SQLITE_CONFLICT_ERROR)) {
         throw new Errors.ConflictError('Person already registered')
       }
-      throw new Errors.GenericError('fail to save Person')
+      throw new Errors.ConflictErrorGenericError('Failed to save Person')
     })
   }
 }
 
-module.exports = PersonRepository
+module.exports = TestPersonRepository

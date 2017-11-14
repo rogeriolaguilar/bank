@@ -1,20 +1,46 @@
 const PersonRequester = require('../domain/person/person_requester')
 const PersonCreator = require('../domain/person/person_creator')
 const Person = require('../domain/person/person')
+const WebErrors = require('./web_errors')
 
-class PersonWebAdapter {
-  constructor(publicationStrategy = (r) => {return r}) {
-    this._publicationStrategy = publicationStrategy
+
+class GetPerson {
+
+  constructor(domainPort = new PersonRequester()) {
+    this._domainPort = domainPort
   }
 
-  getPerson(cpf) {
-    let person = new PersonRequester().getPerson(cpf)
-    return this._publicationStrategy({ cpf: person.cpf, name: person.name, birthday: person.birthday })
-  }
-
-  createPerson(person_params){
-    let person = new Person(person_params)
-    return new PersonCreator().createPerson(person)
+  get(cpf) {
+    return this._domainPort.getPerson(cpf)
+      .then((person) => {
+        if (person === null) {
+          throw new WebErrors.NotFoundError('Person not found.')
+        }
+        return person
+      })
   }
 }
-module.exports = PersonWebAdapter
+
+class CreatePerson {
+
+  constructor(domainPort = new PersonCreator()) {
+    this._domainPort = domainPort
+  }
+
+  create(params) {
+    let person = new Person(params)
+    return new PersonCreator()
+      .createPerson(person)
+      .catch((e) => {
+        console.log(`PersonWebAdapter.create error code: ${e.code}, message: ${e.message}, params: ${params.cpf}`)
+        if (e.code == 'CONFLICT') {
+          throw new WebErrors.WebConflictError('Person already registered.')
+        }
+      })
+  }
+}
+
+module.exports = {
+  GetPerson: GetPerson,
+  CreatePerson: CreatePerson
+}
