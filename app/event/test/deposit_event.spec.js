@@ -8,16 +8,16 @@ describe('DepositEvent', () => {
   describe('#process', () => {
 
     it('account with no balance', () => {
-      let account = new Account(123)
-      
+      let account = new Account({ number: 123, balance: 0 })
+
       new DepositEvent(100, account).process()
       expect(account.balance).to.be.eq(100)
     });
 
     it('account with balance', () => {
       let balance = 200
-      let account = new Account(123, true, balance)
-      
+      let account = new Account({ number: 123, balance: balance })
+
       new DepositEvent(300, account).process()
       expect(account.balance).to.be.eq(500)
     });
@@ -25,9 +25,9 @@ describe('DepositEvent', () => {
 
   describe('#reverse', () => {
     it('reverse deposit', () => {
-      let account = new Account(123)
+      let account = new Account({ number: 123, balance: 0 })
       let event = new DepositEvent(100, account)
-      
+
       event.process()
       expect(account.balance).to.be.eq(100)
       event.reverse()

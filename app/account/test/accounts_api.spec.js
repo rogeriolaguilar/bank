@@ -11,15 +11,15 @@ describe('Accounts REST API', () => {
 
   describe('GET accounts of a person', () => {
     it('should GET the accounts', (done) => {
-      let peopleId = "234"
+      let cpf = "234"
       chai.request(server)
-        .get(`/people/${peopleId}/accounts`)
+        .get(`/people/${cpf}/accounts`)
         .end((err, res) => {
           res.should.have.status(200)
           res.body.id.should.be.eq(account.id)
           res.body.number.should.be.eq(account.number)
-          res.body.status.should.be.eq(account.status)
-          res.body.ownerId.should.be.eq(peopleId)
+          res.body.ownerId.should.be.eq(cpf)
+          res.body.ownerType.should.be.eq('person')
           done()
         })
     })

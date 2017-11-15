@@ -15,7 +15,7 @@ describe('EventProcessor', () => {
   let person
 
   beforeEach(() => {
-    account = new Account(123)
+    account = new Account({number: 123, balance: 0})
     person = new Person({name: 'Martin', birthday: new Date()})
     eventProcessor = new EventProcessor(new MockEventRepository())
   });
