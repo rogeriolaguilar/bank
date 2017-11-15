@@ -16,9 +16,11 @@ app.use('/companies', companies)
 app.use(accounts)
 app.use('/transactions', transactions)
 
-app.use((req, res) => { res.status(404).send() });
+app.use((req, res) => { 
+  res.status(404).send() 
+});
 
-app.use(function (err, req, res, next) {
+app.use(function (err, req, res) {
   console.error(err.stack);
   res.send(500);
 });
