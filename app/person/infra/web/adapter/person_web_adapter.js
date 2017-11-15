@@ -1,5 +1,4 @@
 const PersonRequester = require('../../../../person/domain/person_requester')
-const PersonCreator = require('../../../../person/domain/person_creator')
 const Person = require('../../../../person/domain/person')
 const WebErrors = require('./web_errors')
 const RepositoryFactory = require('../../../../repository_factory')
@@ -26,20 +25,17 @@ class GetPerson {
 class CreatePerson {
 
   constructor(
-    domainPort = new PersonCreator(),
-    repository = RepositoryFactory.personRepository(),
-    eventRepository = RepositoryFactory.eventRepository()
+    domainPort = new EventProcessor(RepositoryFactory.eventRepository()),
+    repository = RepositoryFactory.personRepository()
   ) {
     this._domainPort = domainPort
     this._repository = repository
-    this._eventRepository = eventRepository
   }
 
   create(params) {
     let person = new Person(params, this._repository)
 
-    return new EventProcessor(this._eventRepository)
-      .process(new PersonCreationEvent(person))
+    return this._domainPort.process(new PersonCreationEvent(person))
       .catch((e) => {
         console.log(`PersonWebAdapter.create error code: ${e.code}, message: ${e.message}, params: ${params.cpf}`)
         if (e.code == 'CONFLICT') {
