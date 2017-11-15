@@ -16,12 +16,12 @@ class AccountRepository {
 
   save(account) {
     return knex('accounts').insert({
-      owner_id: account.owner_id,
-      owner_type: account.owner_type,
+      owner_id: account.owner.id,
+      owner_type: account.owner.type,
       balance: account.balance
     }).catch((e) => {
-      console.log(`AccountRepository error code:${e.code} account to owner:${account.owner_id}: ${e.stack}`)
-      throw new Errors.GenericError('fail to save Account')
+      console.log(`AccountRepository error code:${e.code} owner: ${account.owner.cpf}: ${e.stack}`)
+      throw new Errors.GenericError('Fail while saving Account')
     })
   }
 }

@@ -7,11 +7,11 @@ class AccountCreationEvent{
   }
 
   process(){
-    this._owner.handleAccountCreation(this)
+    return this._owner.handleAccountCreation(this)
   }
 
   reverse(){
-    this._owner.reverseAccountCreation(this)
+    return this._owner.reverseAccountCreation(this)
   }
 
   get account(){

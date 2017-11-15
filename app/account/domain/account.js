@@ -2,6 +2,7 @@ class Account {
   constructor(params, repository) {
     this._number = params.number
     this._balance = params.balance
+    this._owner = params.owner
     this._repository = repository
   }
 
@@ -21,6 +22,13 @@ class Account {
     this._balance += withdrawEvent.amount
   }
 
+  handleCreation(accountCreationEvent){
+    return this._repository.save(accountCreationEvent.account)
+  }
+
+  reverseCreation(accountCreationEvent){
+    //this._repository.delete(accountCreationEvent.account)
+  }
 
   get transactions() {
     return this._transactions
@@ -28,6 +36,10 @@ class Account {
 
   get balance() {
     return this._balance
+  }
+
+  get owner(){
+    return this._owner
   }
 }
 module.exports = Account

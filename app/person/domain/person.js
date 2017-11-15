@@ -4,25 +4,26 @@ class Person {
     this._name = params.name
     this._birthday = params.birthday
     this._accounts = []
-    this._repository  = repository
+    this._repository = repository
   }
 
   handleAccountCreation(accountCreationEvent) {
-    this.add_account(accountCreationEvent.account)
-    // account.save
+    let account = accountCreationEvent.account
+    this.add_account(account)
+    return account.handleCreation(accountCreationEvent)
   }
 
   reverseAccountCreation(accountCreationEvent) {
     let accountNumber = accountCreationEvent.account.number
-    this._accounts = this._accounts.filter( account => account.number !== accountNumber)    
-    // account.delete
+    this._accounts = this._accounts.filter(account => account.number !== accountNumber)
+    //return  account.delete
   }
 
-  handleCreation(personCreationEvent){
+  handleCreation(personCreationEvent) {
     return this._repository.save(personCreationEvent.person)
   }
 
-  reverseCreation(personCreationEvent){
+  reverseCreation(personCreationEvent) {
     //return this._repository.delete(personCreationEvent.person())
   }
 
@@ -30,7 +31,7 @@ class Person {
     this._accounts.push(account)
   }
 
-  toJson(){
+  toJson() {
     return JSON.stringify({
       cpf: this._cpf,
       name: this._name,
@@ -42,18 +43,25 @@ class Person {
     return this._accounts
   }
 
-  get name(){
+  get name() {
     return this._name
   }
 
-  get birthday(){
+  get birthday() {
     return this._birthday
   }
 
-  get cpf(){
+  get cpf() {
     return this._cpf
   }
-  
+
+  get id() {
+    return this._cpf
+  }
+
+  get type(){
+    return 'person'
+  }
 }
 module.exports = Person;
 

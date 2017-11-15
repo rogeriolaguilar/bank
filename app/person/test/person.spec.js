@@ -1,10 +1,12 @@
 const expect = require('chai').expect
 const Person = require("../domain/person")
+const Account = require('../../account/domain/account');
+
 
 describe('Person', () => {
   let person
   let accountCreationEvent
-  let account = { number: 123123 }
+  let account = new Account({ number: 123123, balance: 0 })
 
   beforeEach(() => {
     person = new Person({ cpf: '71046356372', name: 'Linus Torvalds', birthday: new Date('1969-12-28') })

@@ -16,14 +16,15 @@ app.use('/companies', companies)
 app.use(accounts)
 app.use('/transactions', transactions)
 
-app.use((req, res) => { 
-  res.status(404).send() 
+app.use((req, res) => {
+  res.status(404).send()
 });
 
-app.use(function (err, req, res) {
+app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.send(500);
-});
+  res.send(500)
+  next()
+})
 
 app.listen(app.get('port'))
 

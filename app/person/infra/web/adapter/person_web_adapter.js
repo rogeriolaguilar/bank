@@ -1,6 +1,6 @@
 const PersonRequester = require('../../../../person/domain/person_requester')
 const Person = require('../../../../person/domain/person')
-const WebErrors = require('./web_errors')
+const WebErrors = require('../../../../web_errors')
 const RepositoryFactory = require('../../../../repository_factory')
 const EventProcessor = require('../../../../event/domain/event_processor')
 const PersonCreationEvent = require('../../../../event/domain/person_creation_event')

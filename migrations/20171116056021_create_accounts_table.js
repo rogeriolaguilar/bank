@@ -2,7 +2,7 @@
 exports.up = function (knex) {
   let schema = knex.schema.createTableIfNotExists('accounts', function (table) {
     table.bigIncrements('id').primary()
-    table.bigInteger('owner_id').notNullable()
+    table.string('owner_id').notNullable()
     table.enum('owner_type', ['person','company']).notNullable()
     table.bigInteger('balance').notNullable()
     table.timestamps(false, true)
