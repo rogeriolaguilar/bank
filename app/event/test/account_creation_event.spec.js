@@ -3,7 +3,7 @@ let sinon = require('sinon')
 
 
 const AccountCreationEvent = require("../domain/account_creation_event");
-const Account = require("../domain/account");
+const Account = require("../../account/domain/account");
 const Person = require("../../person/domain/person");
 
 describe('AccountCreationEvent', () => {

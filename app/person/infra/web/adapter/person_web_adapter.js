@@ -4,7 +4,7 @@ const Person = require('../../../../person/domain/person')
 const WebErrors = require('./web_errors')
 const RepositoryFactory = require('../../../../repository_factory')
 const EventProcessor = require('../../../../event/domain/event_processor')
-const PersonCreationEvent = require('../../../domain/person_creation_event')
+const PersonCreationEvent = require('../../../../event/domain/person_creation_event')
 
 class GetPerson {
 

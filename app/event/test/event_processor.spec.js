@@ -1,9 +1,9 @@
 let expect = require('chai').expect
 
 const EventProcessor = require("../domain/event_processor");
-const DepositEvent = require("../../transaction/domain/deposit_event");
-const WithdrawEvent = require("../../transaction/domain/withdraw_event");
-const AccountCreationEvent = require("../../account/domain/account_creation_event");
+const DepositEvent = require("../domain/deposit_event");
+const WithdrawEvent = require("../domain/withdraw_event");
+const AccountCreationEvent = require("../domain/account_creation_event");
 const Account = require("../../account/domain/account");
 const Person = require("../../person/domain/person");
 const MockEventRepository = require("../infra/mock_event_repository")

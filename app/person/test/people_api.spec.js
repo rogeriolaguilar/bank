@@ -31,7 +31,6 @@ describe('People REST API', () => {
     });
   });
 
-
   describe('GET /person/:cpf', () => {
     it('should GET the person', (done) => {
       chai.request(server)
