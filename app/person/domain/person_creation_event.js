@@ -5,14 +5,14 @@ class PersonCreationEvent{
   }
 
   process(){
-    this._person.handleCreation(this)
+    return this._person.handleCreation(this)
   }
 
   reverse(){
-    this._person.reverseCreation(this)
+    return this._person.reverseCreation(this)
   }
 
-  get account(){
+  get person(){
     return this._person
   }
 

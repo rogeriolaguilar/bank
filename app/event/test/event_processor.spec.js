@@ -1,11 +1,12 @@
 let expect = require('chai').expect
 
-const EventProcessor = require("../event_processor");
-const DepositEvent = require("../transaction/domain/deposit_event");
-const WithdrawEvent = require("../transaction/domain/withdraw_event");
-const AccountCreationEvent = require("../account/domain/account_creation_event");
-const Account = require("../account/domain/account");
-const Person = require("../person/domain/person");
+const EventProcessor = require("../domain/event_processor");
+const DepositEvent = require("../../transaction/domain/deposit_event");
+const WithdrawEvent = require("../../transaction/domain/withdraw_event");
+const AccountCreationEvent = require("../../account/domain/account_creation_event");
+const Account = require("../../account/domain/account");
+const Person = require("../../person/domain/person");
+const MockEventRepository = require("../infra/mock_event_repository")
 
 describe('EventProcessor', () => {
 
@@ -16,7 +17,7 @@ describe('EventProcessor', () => {
   beforeEach(() => {
     account = new Account(123)
     person = new Person({name: 'Martin', birthday: new Date()})
-    eventProcessor = new EventProcessor()
+    eventProcessor = new EventProcessor(new MockEventRepository())
   });
 
   describe('#process', () => {

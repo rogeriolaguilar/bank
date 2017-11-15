@@ -1,9 +1,10 @@
 class Person {
-  constructor(params) {
+  constructor(params, repository) {
     this._cpf = params.cpf
     this._name = params.name
     this._birthday = params.birthday
     this._accounts = []
+    this._repository  = repository
   }
 
   handleAccountCreation(accountCreationEvent) {
@@ -18,11 +19,11 @@ class Person {
   }
 
   handleCreation(personCreationEvent){
-    //save
+    return this._repository.save(personCreationEvent.person())
   }
 
   reverseCreation(personCreationEvent){
-    //delete
+    //return this._repository.delete(personCreationEvent.person())
   }
 
   add_account(account) {

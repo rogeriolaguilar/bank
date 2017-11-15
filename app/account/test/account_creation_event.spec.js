@@ -20,7 +20,7 @@ describe('AccountCreationEvent', () => {
 
   describe('#process', () => {
     it('should call the account owner to handle creation', () => {
-      let handleAccountCreation = sinon.spy(person, 'handleAccountCreation')
+      let handleAccountCreation = sinon.stub(person, 'handleAccountCreation')
 
       event.process()
 
@@ -31,7 +31,7 @@ describe('AccountCreationEvent', () => {
 
   describe('#reverse', () => {
     it('should call the account owner to reverse creation', () => {
-      let reverseAccountCreation = sinon.spy(person, 'reverseAccountCreation')
+      let reverseAccountCreation = sinon.stub(person, 'reverseAccountCreation')
 
       event.reverse()
 

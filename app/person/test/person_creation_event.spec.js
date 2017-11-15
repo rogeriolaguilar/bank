@@ -17,7 +17,7 @@ describe('PersonCreationEvent', () => {
 
   describe('#process', () => {
     it('should call the person to handle creation', () => {
-      let handleCreation = sinon.spy(person, 'handleCreation')
+      let handleCreation = sinon.stub(person, 'handleCreation')
 
       event.process()
 
@@ -28,7 +28,7 @@ describe('PersonCreationEvent', () => {
 
   describe('#reverse', () => {
     it('should call the person to reverse creation', () => {
-      let reverseCreation = sinon.spy(person, 'reverseCreation')
+      let reverseCreation = sinon.stub(person, 'reverseCreation')
 
       event.reverse()
 
