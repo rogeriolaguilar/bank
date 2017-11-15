@@ -1,9 +1,9 @@
 class AccountCreationEvent{
-  constructor(account, owner, occurredAt = new Date()){
-    this._occurredAt = occurredAt
+  constructor(account, owner){
     this._account = account
     this._owner = owner
     this._type = 'person_creation'
+    this.createdAt = new Date()
   }
 
   process(){
@@ -24,6 +24,23 @@ class AccountCreationEvent{
 
   get occurredAt(){
     return this._occurredAt
+  }
+
+  get type() {
+    return this._type
+  }
+
+  get payload() {
+    return JSON.stringify({
+      owner: {
+        type: this._owner.type,
+        id: this._owner.id
+      },
+      account: {
+        balance: this._account.balance,
+        number: this._account.number  
+      }
+    })
   }
 }
 module.exports = AccountCreationEvent

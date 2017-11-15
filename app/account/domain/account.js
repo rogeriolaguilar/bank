@@ -1,7 +1,7 @@
 class Account {
   constructor(params, repository) {
     this._number = params.number
-    this._balance = params.balance
+    this._balance = params.balance || 0
     this._owner = params.owner
     this._repository = repository
   }

@@ -25,6 +25,7 @@ class PersonRepository {
       if (e.code == PG_CONFLICT_ERROR) {
         throw new Errors.ConflictError('Person already registered')
       }
+      console.log(`PersonRepository person cpf:${person.cpf}: ${e.stack}`)
       throw new Errors.GenericError('Failed to save Person')
     })
   }

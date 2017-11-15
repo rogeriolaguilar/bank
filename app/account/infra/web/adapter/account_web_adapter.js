@@ -21,14 +21,12 @@ class CreatePersonAccount {
     return this._personRequester.getPersonObject(params.cpf)
       .then((owner) => {
         params.owner = owner
-        console.log(`>>>>>>>>>> Person finded ${owner.cpf}`)
-        let account =  new Account(params, this._repository)
+        let account = new Account(params, this._repository)
         return this._domainPort.process(new AccountCreationEvent(account, owner))
-          .catch((e) => {
-            console.log(`AccountWebAdapter.Create error code: ${e.code}, message: ${e.message}, params: ${params.cpf}`)
-            
-            throw new WebErrors.InternalServerError(e.message)
-          })
+
+      }).catch((e) => {
+        console.log(`AccountWebAdapter.Create error code: ${e.code}, message: ${e.message}, params: ${params.cpf}`)
+        throw new WebErrors.InternalServerError(e.message)
       })
   }
 }

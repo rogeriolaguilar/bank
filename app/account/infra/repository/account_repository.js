@@ -15,6 +15,12 @@ class AccountRepository {
   }
 
   save(account) {
+    console.log({
+      owner_id: account.owner.id,
+      owner_type: account.owner.type,
+      balance: account.balance
+    })
+
     return knex('accounts').insert({
       owner_id: account.owner.id,
       owner_type: account.owner.type,
