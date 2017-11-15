@@ -1,4 +1,5 @@
-//process.env.NODE_ENV = 'test';
+process.env.NODE_ENV = 'test';
+const knex = require("knex")(require("../../../knexfile").test)
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const server = require('../../../server');
@@ -13,6 +14,24 @@ chai.use(chaiHttp);
 describe('People REST API', () => {
   const person = { cpf: "77777777777", name: 'Yukihiro', birthday: '1991-01-27T00:00:00.000Z' }
 
+  describe('POST /person', () => {
+
+    it('should return response code 201', (done) => {
+      knex('people').del()
+        .then(() => {
+          chai.request(server)
+            .post(PEOPLE_URL)
+            .send(person)
+            .end((err, res) => {
+              res.should.have.status(201)
+              res.body.should.be.empty
+              done()
+            })
+        })
+    });
+  });
+
+
   describe('GET /person/:cpf', () => {
     it('should GET the person', (done) => {
       chai.request(server)
@@ -26,19 +45,6 @@ describe('People REST API', () => {
         })
     })
   })
-
-  describe('POST /person', () => {
-    it('it should return the person cpf', (done) => {
-      chai.request(server)
-        .post(PEOPLE_URL)
-        .send({ cpf: person.cpf, name: person.name, birthday: person.birthday })
-        .end((err, res) => {
-          res.should.have.status(201)
-          res.body.should.be.empty
-          done()
-        })
-    });
-  });
 
   describe('PUT /person/:cpf', () => {
     it('it should return the updated person', (done) => {
