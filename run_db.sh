@@ -9,3 +9,5 @@ docker run \
   -e POSTGRES_PASSWORD=bank \
   -p 5432:5432 \
   -d postgres:alpine
+
+knex migrate:latest --env development

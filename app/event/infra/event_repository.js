@@ -2,7 +2,7 @@ const knex = require("knex")(require("../../../knexfile")[process.env.NODE_ENV])
 const Errors = require('../../errors')
 
 const PG_CONFLICT_ERROR = '23505'
-//rigth port 
+
 class EventRepository {
 
   save(event) {
