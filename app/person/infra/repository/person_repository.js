@@ -25,7 +25,7 @@ class PersonRepository {
       if (e.code == PG_CONFLICT_ERROR) {
         throw new Errors.ConflictError('Person already registered')
       }
-      throw new Errors.GenericError('fail to save Person')
+      throw new Errors.GenericError('Failed to save Person')
     })
   }
 }

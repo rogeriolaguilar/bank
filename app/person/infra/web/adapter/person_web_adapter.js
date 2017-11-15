@@ -41,7 +41,7 @@ class CreatePerson {
         if (e.code == 'CONFLICT') {
           throw new WebErrors.WebConflictError('Person already registered.')
         }
-        throw e
+        throw new WebErrors.InternalServerError(e.message)
       })
   }
 }
