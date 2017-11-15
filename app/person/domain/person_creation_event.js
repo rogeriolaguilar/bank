@@ -1,23 +1,28 @@
-class PersonCreationEvent{
-  constructor(person, occurredAt = new Date()){
-    this._occurredAt = occurredAt
+class PersonCreationEvent {
+  constructor(person) {
     this._person = person
+    this._type = 'person_creation'
+    this.createdAt = new Date()
   }
 
-  process(){
+  process() {
     return this._person.handleCreation(this)
   }
 
-  reverse(){
+  reverse() {
     return this._person.reverseCreation(this)
   }
 
-  get person(){
+  get person() {
     return this._person
   }
 
-  get occurredAt(){
-    return this._occurredAt
+  get type() {
+    return this._type
+  }
+
+  get payload() {
+    return this._person.toJson()
   }
 }
 module.exports = PersonCreationEvent

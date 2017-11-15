@@ -14,7 +14,6 @@ describe('PersonCreationEvent', () => {
     event = new PersonCreationEvent(person)
   });
 
-
   describe('#process', () => {
     it('should call the person to handle creation', () => {
       let handleCreation = sinon.stub(person, 'handleCreation')
@@ -25,7 +24,6 @@ describe('PersonCreationEvent', () => {
     });
   });
 
-
   describe('#reverse', () => {
     it('should call the person to reverse creation', () => {
       let reverseCreation = sinon.stub(person, 'reverseCreation')
@@ -35,5 +33,4 @@ describe('PersonCreationEvent', () => {
       expect(reverseCreation.calledOnce).to.eq(true)
     });
   })
-
 });

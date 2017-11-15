@@ -1,25 +1,15 @@
 const knex = require("knex")(require("../../../knexfile")[process.env.NODE_ENV])
-const Errors = require('../../errors')
-
-const PG_CONFLICT_ERROR = '23505'
 
 class EventRepository {
 
   save(event) {
-    return knex('events').insert({
-      
-      type: event.name,      
-      occurred_at: event.occurred_at
-
+    knex('events').insert({
+      type: event.type,
+      created_at: event.createdAt,
+      payload: event.payload
     }).catch((e) => {
-      console.log(`EventRepository error code:'${e.code}, event:${JSON.parse(event)}`)
-      if (e.code.includes(PG_CONFLICT_ERROR)) {
-        throw new Errors.ConflictError('Already registered')
-      }
-      //retry to persist
-      console.log(e.stack)
+      console.log(`EventRepository error code:'${e.code}, ${e.stack}`)
     })
   }
 }
-
 module.exports = EventRepository

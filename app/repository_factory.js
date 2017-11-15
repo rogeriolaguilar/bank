@@ -1,6 +1,5 @@
 const PersonRepository = require('./person/infra/repository/person_repository')
 const TestPersonRepository = require('./person/infra/repository/test_person_repository')
-const TestEventRepository = require('./event/infra/test_event_repository')
 const EventRepository = require('./event/infra/event_repository')
 
 const ENVS_USING_MEMORY_DB = ['test', 'development']
@@ -19,10 +18,7 @@ class RepositoryFactory {
     return new PersonRepository()
   }
 
-  static eventRepository(env = DEFAULT_ENV) {
-    if (isTest(env)) {
-      return new TestEventRepository()
-    }
+  static eventRepository() {
     return new EventRepository()
   }
 }

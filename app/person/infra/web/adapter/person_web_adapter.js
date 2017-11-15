@@ -37,8 +37,9 @@ class CreatePerson {
 
   create(params) {
     let person = new Person(params, this._repository)
-    
-    return new EventProcessor(this._eventRepository).process(new PersonCreationEvent(person))
+
+    return new EventProcessor(this._eventRepository)
+      .process(new PersonCreationEvent(person))
       .catch((e) => {
         console.log(`PersonWebAdapter.create error code: ${e.code}, message: ${e.message}, params: ${params.cpf}`)
         if (e.code == 'CONFLICT') {

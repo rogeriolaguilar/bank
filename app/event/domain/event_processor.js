@@ -1,11 +1,14 @@
 class EventProcessor {
-  constructor(eventRepository){
+  constructor(eventRepository) {
     this._eventRepository = eventRepository
   }
 
- process(event){
-    event.process()
-    this._eventRepository.save(event)
+  process(event) {
+    return event.process()
+      .then((r) => { 
+        this._eventRepository.save(event) 
+        return r
+      })
   }
 }
 module.exports = EventProcessor

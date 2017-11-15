@@ -19,7 +19,7 @@ class Person {
   }
 
   handleCreation(personCreationEvent){
-    return this._repository.save(personCreationEvent.person())
+    return this._repository.save(personCreationEvent.person)
   }
 
   reverseCreation(personCreationEvent){
@@ -28,6 +28,14 @@ class Person {
 
   add_account(account) {
     this._accounts.push(account)
+  }
+
+  toJson(){
+    return JSON.stringify({
+      cpf: this._cpf,
+      name: this._name,
+      birthday: this._birthday
+    })
   }
 
   get accounts() {
@@ -45,6 +53,7 @@ class Person {
   get cpf(){
     return this._cpf
   }
+  
 }
 module.exports = Person;
 

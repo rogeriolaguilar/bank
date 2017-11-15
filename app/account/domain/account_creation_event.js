@@ -3,6 +3,7 @@ class AccountCreationEvent{
     this._occurredAt = occurredAt
     this._account = account
     this._owner = owner
+    this._type = 'person_creation'
   }
 
   process(){
