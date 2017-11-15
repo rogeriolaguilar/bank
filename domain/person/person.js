@@ -3,8 +3,6 @@ class Person {
     this._cpf = params.cpf
     this._name = params.name
     this._birthday = params.birthday
-
-    // change account array to a account repository
     this._accounts = []
   }
 

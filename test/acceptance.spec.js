@@ -55,7 +55,7 @@ describe('Bank Person', () => {
   describe('create', () => {
 
     const person_params = { cpf: cpf, name: 'Robert Martin', birthday: new Date('01-01-1952') }
-    const repository = RepositoryFactory.getPersonRepository('test')
+    const repository = RepositoryFactory.personRepository('test')
 
     it('should create person when asked for it', () => {
       const personCreator = new PersonCreator(repository)

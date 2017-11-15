@@ -5,7 +5,7 @@ const ENVS_USING_MEMORY_DB = ['test', 'development']
 
 class RepositoryFactory {
   
-  static getPersonRepository(env = 'production') {
+  static personRepository(env = process.env.NODE_ENV) {
     if (ENVS_USING_MEMORY_DB.includes(env.toLowerCase())) {
       return new TestPersonRepository()
     }
