@@ -1,3 +1,7 @@
+class BadRequestError extends Error {
+  get code() { return 400 }
+}
+
 class WebConflictError extends Error {
   get code() { return 409 }
 }
@@ -13,5 +17,6 @@ class InternalServerError extends Error {
 module.exports = {
   WebConflictError: WebConflictError,
   NotFoundError: NotFoundError,
+  BadRequestError: BadRequestError,
   InternalServerError: InternalServerError
 }

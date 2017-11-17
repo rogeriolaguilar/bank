@@ -1,4 +1,4 @@
-const PersonRepository = require('./person/infra/repository/person_repository')
+const PostgresqlPersonRepository = require('./person/infra/repository/postgresql_person_repository');
 const TestPersonRepository = require('./person/infra/repository/test_person_repository')
 const EventRepository = require('./event/infra/event_repository')
 const AccountRepository = require('./account/infra/repository/account_repository')
@@ -16,7 +16,7 @@ class RepositoryFactory {
     if (isTest(env)) {
       return new TestPersonRepository()
     }
-    return new PersonRepository()
+    return new PostgresqlPersonRepository()
   }
 
   static eventRepository() {

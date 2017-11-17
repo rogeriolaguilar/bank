@@ -15,12 +15,15 @@ class CreatePersonAccount {
 
   create(request) {
     return this._accountCreator.create({
-    
+
       owner_type: 'person',
       owner_id: request.params.cpf,
       balance: request.body.balance
-    
+
     }).catch((e) => {
+      if (e.code === 'NOTFOUND') {
+        throw new WebErrors.BadRequestError(e.message)
+      }
       console.log(`AccountWebAdapter.Create error params: ${request.params.cpf}, code: ${e.code}, stack: ${e.stack}`)
       throw new WebErrors.InternalServerError(e.message)
     })
