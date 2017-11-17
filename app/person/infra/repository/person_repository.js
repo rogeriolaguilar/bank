@@ -1,8 +1,18 @@
 const knex = require("knex")(require("../../../../knexfile")[process.env.NODE_ENV])
 const Errors = require('../../../errors')
 const PG_CONFLICT_ERROR = '23505'
+const Person = require('../../domain/person');
+
+
 
 class PersonRepository {
+  get(cpf) {
+    this.getPerson(cpf)
+      .then((params) => {
+        return new Person(params, this._personRepository)
+      })
+  }
+
   getPerson(cpf) {
     return knex.select()
       .from('people')

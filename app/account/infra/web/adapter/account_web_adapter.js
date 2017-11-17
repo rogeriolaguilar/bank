@@ -8,24 +8,24 @@ const WebErrors = require('../../../../web_errors')
 class CreatePersonAccount {
 
   constructor(
-    domainPort = new EventProcessor(RepositoryFactory.eventRepository()),
-    repository = RepositoryFactory.accountRepository(),
-    personRequester = new PersonRequester()
+    accountRepository = RepositoryFactory.accountRepository(),
+    personRepository = RepositoryFactory.personRepository()
   ) {
-    this._domainPort = domainPort
-    this._repository = repository
-    this._personRequester = personRequester
+    this._accountRepository = accountRepository
+    this._personRepository = personRepository
+    this._domainPort = new EventProcessor(RepositoryFactory.eventRepository())
   }
 
   create(params) {
-    return this._personRequester.getPersonObject(params.cpf)
+    const personRequester = new PersonRequester()
+    return personRequester.getPersonObject(params.cpf)
       .then((owner) => {
         params.owner = owner
-        let account = new Account(params, this._repository)
+        let account = new Account(params, this._accountRepository)
         return this._domainPort.process(new AccountCreationEvent(account, owner))
 
       }).catch((e) => {
-        console.log(`AccountWebAdapter.Create error code: ${e.code}, message: ${e.message}, params: ${params.cpf}`)
+        console.log(`AccountWebAdapter.Create error params: ${params.cpf}, code: ${e.code}, stack: ${e.stack}`)
         throw new WebErrors.InternalServerError(e.message)
       })
   }

@@ -45,5 +45,9 @@ class Account {
   get number(){
     return this._number
   }
+
+  set number(number){
+    this._number = number
+  }
 }
 module.exports = Account

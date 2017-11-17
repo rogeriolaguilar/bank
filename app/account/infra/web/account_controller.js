@@ -9,8 +9,8 @@ class AccountController {
     let adapter = new AccountWebAdapter.CreatePersonAccount()
 
     adapter.create({cpf: req.params.cpf, balance: req.body.balance})
-      .then((accountNumber) => {
-        res.status(201).json({ id: accountNumber})
+      .then((account) => {
+        res.status(201).json({ id: account.number})
       })
       .catch((e) => {
         console.error(e.message)
