@@ -31,12 +31,12 @@ class Person {
     this._accounts.push(account)
   }
 
-  toJson() {
-    return JSON.stringify({
+  get payload() {
+    return {
       cpf: this._cpf,
       name: this._name,
       birthday: this._birthday
-    })
+    }
   }
 
   get accounts() {

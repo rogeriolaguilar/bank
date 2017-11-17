@@ -2,7 +2,7 @@ class AccountCreationEvent{
   constructor(account, owner){
     this._account = account
     this._owner = owner
-    this._type = 'person_creation'
+    this._type = 'account_creation'
     this.createdAt = new Date()
   }
 
@@ -31,7 +31,7 @@ class AccountCreationEvent{
   }
 
   get payload() {
-    return JSON.stringify({
+    return {
       owner: {
         type: this._owner.type,
         id: this._owner.id
@@ -40,7 +40,7 @@ class AccountCreationEvent{
         balance: this._account.balance,
         number: this._account.number  
       }
-    })
+    }
   }
 }
 module.exports = AccountCreationEvent

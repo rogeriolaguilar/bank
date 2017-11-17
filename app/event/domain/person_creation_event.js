@@ -22,7 +22,7 @@ class PersonCreationEvent {
   }
 
   get payload() {
-    return this._person.toJson()
+    return this._person.payload
   }
 }
 module.exports = PersonCreationEvent

@@ -6,7 +6,7 @@ class EventRepository {
     knex('events').insert({
       type: event.type,
       created_at: event.createdAt,
-      payload: event.payload
+      payload: JSON.stringify(event.payload)
     }).catch((e) => {
       console.log(`EventRepository error code:'${e.code}, ${e.stack}`)
     })
