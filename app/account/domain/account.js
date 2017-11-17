@@ -41,5 +41,9 @@ class Account {
   get owner(){
     return this._owner
   }
+
+  get number(){
+    return this._number
+  }
 }
 module.exports = Account
