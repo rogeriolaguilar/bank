@@ -8,7 +8,7 @@ class AccountController {
   static createToPerson(req, res){
     let adapter = new AccountWebAdapter.CreatePersonAccount()
 
-    adapter.create({cpf: req.params.cpf, balance: req.body.balance})
+    adapter.create(req)
       .then((account) => {
         res.status(201).json({ id: account.number})
       })

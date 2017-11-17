@@ -10,12 +10,14 @@ class AccountCreator {
   }
 
   create(accountParams) {
-    this.ownerRepository.get(accountParams.owner_id)
+    console.log(`account params ${JSON.stringify(accountParams)}`)
+    return this._ownerRepository
+      .get(accountParams.owner_id)
       .then((owner) => {
         accountParams.owner = owner
         let account = new Account(accountParams, this._accountRepository)
+        
         return this._eventProcessor.process(new AccountCreationEvent(account, owner))
-
       })
   }
 }

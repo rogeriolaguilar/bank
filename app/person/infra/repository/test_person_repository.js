@@ -1,10 +1,18 @@
 const knex = require("knex")(require("../../../../knexfile")[process.env.NODE_ENV])
 const Errors = require('../../../errors')
+const Person = require('../../domain/person');
 
 const SQLITE_CONFLICT_ERROR = 'SQLITE_CONSTRAINT'
 
 //rigth port 
 class TestPersonRepository {
+
+  get(cpf) {
+    return this.getPerson(cpf)
+      .then((params) => {
+        return new Person(params, this._personRepository)
+      })
+  }
 
   getPerson(cpf) {
     return knex.select()
