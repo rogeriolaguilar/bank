@@ -7,8 +7,8 @@ exports.up = function (knex) {
       'person_creation',
       'company_creation',
       'account_creation',
-      'deposit_transaction',
-      'withdraw_transaction'
+      'deposit',
+      'withdraw'
     ])
     table.timestamps(false, true)
   });

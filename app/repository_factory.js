@@ -2,6 +2,7 @@ const PostgresqlPersonRepository = require('./person/infra/repository/postgresql
 const TestPersonRepository = require('./person/infra/repository/test_person_repository')
 const EventRepository = require('./event/infra/event_repository')
 const AccountRepository = require('./account/infra/repository/account_repository')
+const TransactionRepository = require('./transaction/infra/repository/transaction_repository')
 const DB_CONFIG = require("../knexfile")
 
 const isSQLite = (env) => {
@@ -27,5 +28,9 @@ class RepositoryFactory {
     return new AccountRepository()
   }
 
+
+  static transactionRepository() {
+    return new TransactionRepository()
+  }
 }
 module.exports = RepositoryFactory

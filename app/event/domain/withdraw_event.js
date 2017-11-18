@@ -3,6 +3,7 @@ class WithdrawEvent {
     this.occurredAt = occurredAt
     this.amount = amount
     this.account = account
+    this.createdAt = new Date()
   }
 
   process() {

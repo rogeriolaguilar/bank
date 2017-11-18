@@ -8,18 +8,22 @@ class Account {
 
   handleDeposit(depositEvent) {
     this._balance += depositEvent.amount
+    return this._repository.update_balance(this)
   }
 
   reverseDeposit(depositEvent) {
     this._balance -= depositEvent.amount
+    return this._repository.update_balance(this)
   }
 
   handleWithdraw(withdrawEvent) {
     this._balance -= withdrawEvent.amount
+    return this._repository.update_balance(this)
   }
 
   reverseWithdraw(withdrawEvent) {
     this._balance += withdrawEvent.amount
+    return this._repository.update_balance(this)
   }
 
   handleCreation(accountCreationEvent){
@@ -27,7 +31,7 @@ class Account {
   }
 
   reverseCreation(accountCreationEvent){
-    //this._repository.delete(accountCreationEvent.account)
+    return this._repository.delete(accountCreationEvent.account)
   }
 
   get transactions() {
