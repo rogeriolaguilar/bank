@@ -2,18 +2,18 @@ const PostgresqlPersonRepository = require('./person/infra/repository/postgresql
 const TestPersonRepository = require('./person/infra/repository/test_person_repository')
 const EventRepository = require('./event/infra/event_repository')
 const AccountRepository = require('./account/infra/repository/account_repository')
+const DB_CONFIG = require("../knexfile")
 
-const ENVS_USING_MEMORY_DB = ['test', 'development']
-const DEFAULT_ENV = process.env.NODE_ENV
-
-const isTest = (env) => {
-  return ENVS_USING_MEMORY_DB.includes(env.toLowerCase())
+const isSQLite = (env) => {
+  const DB_CLIENT = DB_CONFIG[env].client
+  console.log(`DB client ${DB_CLIENT}`)
+  return DB_CLIENT === 'sqlite3'
 }
 
 class RepositoryFactory {
 
-  static personRepository(env = DEFAULT_ENV) {
-    if (isTest(env)) {
+  static personRepository(env = process.env.NODE_ENV) {
+    if (isSQLite(env)) {
       return new TestPersonRepository()
     }
     return new PostgresqlPersonRepository()
@@ -26,6 +26,6 @@ class RepositoryFactory {
   static accountRepository() {
     return new AccountRepository()
   }
-  
+
 }
 module.exports = RepositoryFactory
