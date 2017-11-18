@@ -24,6 +24,14 @@ class PersonRepository {
         return people[0]
       })
   }
+
+  save(person) {
+    return knex('people').insert({
+      name: person.name,
+      cpf: person.cpf,
+      birthday: person.birthday
+    })
+  }
 }
 
 module.exports = PersonRepository

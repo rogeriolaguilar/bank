@@ -6,6 +6,7 @@
   "scripts": {
     "test": "NODE_ENV=test mocha app/**/**/*.spec.js --exit",
     "dev": "NODE_ENV=development nodemon server.js",
+    "stg": "NODE_ENV=staging node server.js",
     "eslint": "eslint app/**"
   },
   "repository": {

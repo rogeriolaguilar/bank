@@ -10,4 +10,5 @@ docker run \
   -p 5432:5432 \
   -d postgres:alpine
 
-knex migrate:latest --env development
+sleep 3
+knex migrate:latest --env staging

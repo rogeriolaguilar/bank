@@ -1,18 +1,12 @@
-const knex = require("knex")(require("../../../../knexfile")[process.env.NODE_ENV])
 const Errors = require('../../../errors')
 const PersonRepository = require('./person_repository');
-
 
 const PG_CONFLICT_ERROR = '23505'
 
 class PostgresPersonRepository extends PersonRepository {
 
   save(person) {
-    return knex('people').insert({
-      name: person.name,
-      cpf: person.cpf,
-      birthday: person.birthday
-    }).catch((e) => {
+    return super.save(person).catch((e) => {
       console.log(`PostgresPersonRepository error code:${e.code} person cpf:${person.cpf}`)
       if (e.code == PG_CONFLICT_ERROR) {
         throw new Errors.ConflictError('Person already registered')

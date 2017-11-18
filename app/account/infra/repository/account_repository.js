@@ -22,7 +22,7 @@ class AccountRepository {
       owner_type: account.owner.type,
       balance: account.balance
     }).then((results)=>{
-      account.number = results[0]
+      account.number = results[0].id || results[0]
       return account 
     }).catch((e) => {
       console.log(`AccountRepository error code:${e.code} owner: ${account.owner.cpf}: ${e.stack}`)
