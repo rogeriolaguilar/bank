@@ -6,6 +6,10 @@ class ConflictError extends Error {
   get code() { return 'CONFLICT' }
 }
 
+class InvalidDataError extends Error {
+  get code() { return 'INVALIDDATA'}
+}
+
 class GenericError extends Error {
   get code() { return 'GENERIC' }
 }
@@ -13,5 +17,6 @@ class GenericError extends Error {
 module.exports = {
   NotFoundError: NotFoundError,
   ConflictError: ConflictError,
+  InvalidDataError: InvalidDataError,
   GenericError: GenericError
 }

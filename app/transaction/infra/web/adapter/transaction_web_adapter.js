@@ -21,7 +21,7 @@ class Create {
       amount: request.body.amount
 
     }).catch((e) => {
-      if (e.code === 'NOTFOUND') {
+      if (e.code === 'NOTFOUND' || e.code === 'INVALIDDATA') {
         throw new WebErrors.BadRequestError(e.message)
       }
       console.log(`TransactionWebAdapter.Create error params: ${request.params.cpf}, code: ${e.code}, stack: ${e.stack}`)
