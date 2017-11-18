@@ -1,12 +1,8 @@
-let express = require('express')
-let router = express.Router()
+const express = require('express')
+const router = express.Router()
+const TransactionController = require('../app/transaction/infra/web/transaction_controller');
 
-const TransactionsHandler = {
-  get(req, res) { res.json({ id: req.params.id, type: "deposit", amount: 1000 }) },
-  create(req, res) { res.status(201).json({ id: "dummy-dummy-dummy-dummy" }) },
-}
-
-router.get('/:id', TransactionsHandler.get)
-router.post('/', TransactionsHandler.create)
+router.get('/accounts/:number/transactions', TransactionController.get)
+router.post('/accounts/:number/transactions', TransactionController.create)
 
 module.exports = router

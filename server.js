@@ -14,7 +14,7 @@ app.set('port', process.env.HTTP_PORT || 3000)
 app.use('/people', people)
 app.use('/companies', companies)
 app.use(accounts)
-app.use('/transactions', transactions)
+app.use(transactions)
 
 app.use((req, res) => {
   res.status(404).send()
