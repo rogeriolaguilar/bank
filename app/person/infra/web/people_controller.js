@@ -6,22 +6,19 @@ class PeopleController {
     new PersonWebAdapter.GetPerson()
       .get(req.params.cpf)
       .then((person) => {
-        res.json({ cpf: person.cpf, name: person.name, birthday: person.birthday })
-      })
-      .catch((e) => {
+        res.json(person)
+      }).catch((e) => {
         console.error(e.message)
         res.status(e.code).json({ message: e.message })
       })
   }
 
   static create(req, res) {
-    let adapter = new PersonWebAdapter.CreatePerson()
-
-    adapter.create(req.body)
+    new PersonWebAdapter.CreatePerson()
+      .create(req.body)
       .then(() => {
         res.status(201).json()
-      })
-      .catch((e) => {
+      }).catch((e) => {
         console.error(e.message)
         res.status(e.code).json({ message: e.message })
       })

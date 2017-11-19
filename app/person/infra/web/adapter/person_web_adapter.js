@@ -1,9 +1,7 @@
 const PersonRequester = require('../../../../person/domain/person_requester')
-const Person = require('../../../../person/domain/person')
 const WebErrors = require('../../../../web_errors')
 const RepositoryFactory = require('../../../../repository_factory')
-const EventProcessor = require('../../../../event/domain/event_processor')
-const PersonCreationEvent = require('../../../../event/domain/person_creation_event')
+const PersonCreator = require('../../../domain/person_creator');
 
 class GetPerson {
 
@@ -24,25 +22,18 @@ class GetPerson {
 
 class CreatePerson {
 
-  constructor(
-    domainPort = new EventProcessor(RepositoryFactory.eventRepository()),
-    repository = RepositoryFactory.personRepository()
-  ) {
-    this._domainPort = domainPort
-    this._repository = repository
+  constructor(eventRepository = RepositoryFactory.eventRepository(), personRepository = RepositoryFactory.personRepository()) {
+    this._personCreator = new PersonCreator(personRepository, eventRepository)
   }
 
   create(params) {
-    let person = new Person(params, this._repository)
-
-    return this._domainPort.process(new PersonCreationEvent(person))
-      .catch((e) => {
-        console.log(`PersonWebAdapter.create error code: ${e.code}, message: ${e.message}, params: ${params.cpf}`)
-        if (e.code == 'CONFLICT') {
-          throw new WebErrors.WebConflictError('Person already registered.')
-        }
-        throw new WebErrors.InternalServerError(e.message)
-      })
+    return this._personCreator.create(params).catch((e) => {
+      console.log(`PersonWebAdapter.create error code: ${e.code}, message: ${e.message}, params: ${params.cpf}`)
+      if (e.code == 'CONFLICT') {
+        throw new WebErrors.WebConflictError('Person already registered.')
+      }
+      throw new WebErrors.InternalServerError(e.message)
+    })
   }
 }
 
