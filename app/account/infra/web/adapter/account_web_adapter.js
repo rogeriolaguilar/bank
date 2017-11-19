@@ -3,8 +3,22 @@ const WebErrors = require('../../../../web_errors')
 const AccountCreator = require('../../../domain/account_creator');
 
 
-class CreatePersonAccount {
+class GetPersonAccount {
+  constructor(accountRepository = RepositoryFactory.accountRepository()) {
+    this._repository = accountRepository
+  }
 
+  get(request) {
+    return this._repository
+      .getByOwner({ id: request.params.cpf, type: 'person' })
+      .catch((e) => {
+        console.log(`AccountWebAdapter.Get error params: ${request.params.cpf}, code: ${e.code}, stack: ${e.stack}`)
+        throw new WebErrors.InternalServerError(e.message)
+      })
+  }
+}
+
+class CreatePersonAccount {
   constructor(
     accountRepository = RepositoryFactory.accountRepository(),
     personRepository = RepositoryFactory.personRepository(),
@@ -31,5 +45,6 @@ class CreatePersonAccount {
 }
 
 module.exports = {
-  CreatePersonAccount: CreatePersonAccount
+  CreatePersonAccount: CreatePersonAccount,
+  GetPersonAccount: GetPersonAccount
 }
