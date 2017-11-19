@@ -3,20 +3,7 @@ class Person {
     this._cpf = params.cpf
     this._name = params.name
     this._birthday = params.birthday
-    this._accounts = []
     this._repository = repository
-  }
-
-  handleAccountCreation(accountCreationEvent) {
-    let account = accountCreationEvent.account
-    this.add_account(account)
-    return account.handleCreation(accountCreationEvent)
-  }
-
-  reverseAccountCreation(accountCreationEvent) {
-    let accountNumber = accountCreationEvent.account.number
-    this._accounts = this._accounts.filter(account => account.number !== accountNumber)
-    //return  account.delete
   }
 
   handleCreation(personCreationEvent) {
