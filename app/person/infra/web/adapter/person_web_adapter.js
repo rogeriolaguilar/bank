@@ -5,8 +5,8 @@ const PersonCreator = require('../../../domain/person_creator');
 
 class GetPerson {
 
-  constructor(domainPort = new PersonRequester()) {
-    this._domainPort = domainPort
+  constructor(personRepository = RepositoryFactory.personRepository() ) {
+    this._domainPort = new PersonRequester(personRepository)
   }
 
   get(cpf) {
