@@ -7,12 +7,12 @@ class AccountRepository {
   get(accountNumber) {
     return knex.select()
       .from('accounts')
-      .where({ id: accountNumber })
+      .where({ number: accountNumber })
       .then((accounts) => {
         if (accounts.length == 0) {
           throw new Errors.NotFoundError('Account could not be found')
         }
-        return new Account({number: accounts[0].id, balance: accounts[0].balance}, this)
+        return new Account(accounts[0], this)
       })
   }
 
@@ -22,21 +22,22 @@ class AccountRepository {
       .where({ owner_id: owner.id, owner_type: owner.type })
       .then((accounts) => {
         if (accounts.length == 0) {
-          return null
+          return []
         }
+        console.log(">>>>>acounts" + JSON.stringify(accounts))
         return accounts
       })
   }
 
   save(account) {
     return knex('accounts')
-      .returning(['id'])
+      .returning('number')
       .insert({
         owner_id: account.owner.id,
         owner_type: account.owner.type,
         balance: account.balance
       }).then((results) => {
-        account.number = results[0].id || results[0]
+        account.number = results[0]
         return account
       }).catch((e) => {
         console.log(`AccountRepository error code:${e.code} owner: ${account.owner.cpf}: ${e.stack}`)
@@ -46,7 +47,7 @@ class AccountRepository {
 
   update_balance(account) {
     return knex('accounts')
-      .where({ id: account.number })
+      .where({ number: account.number })
       .update({
         balance: account.balance
       }).catch((e) => {
