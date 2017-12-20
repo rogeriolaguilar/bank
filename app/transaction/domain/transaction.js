@@ -26,6 +26,10 @@ class Transaction {
     return this._repository.save(this)
   }
 
+  reverseCreation(){
+    // TODO
+  }
+
   get amount(){
     return this._amount
   }
